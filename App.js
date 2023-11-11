@@ -1,27 +1,34 @@
-import { StatusBar } from "expo-status-bar"
-import { SafeAreaView, StyleSheet, Text, View } from "react-native"
+import React, { useCallback } from "react"
+import { View, StyleSheet } from "react-native"
+import CurrentWeather from "./src/components/CurrentWeather"
+import UpComingWeather from "./src/components/UpComingWeather"
+import { useFonts } from "expo-font"
+import * as SplashScreen from "expo-splash-screen"
 
-export default function App() {
+SplashScreen.preventAutoHideAsync()
+const App = () => {
+  const [fontsLoaded, fontError] = useFonts({
+    "parry-hotter": require("./assets/fonts/ParryHotter.ttf")
+  })
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded, fontError])
+
+  if (!fontsLoaded && !fontError) {
+    return null
+  }
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
-        <Text>Weather App</Text>
-        {/* <StatusBar style="auto" /> */}
-      </View>
-    </SafeAreaView>
+    <View style={styles.container} onLayout={onLayoutRootView}>
+      <UpComingWeather />
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  },
-
   container: {
-    flex: 1,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center",
-    marginHorizontal: "auto"
+    flex: 1
   }
 })
+export default App
