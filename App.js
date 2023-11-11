@@ -1,11 +1,16 @@
 import React, { useCallback } from "react"
 import { View, StyleSheet } from "react-native"
-import CurrentWeather from "./src/components/CurrentWeather"
-import UpComingWeather from "./src/components/UpComingWeather"
+
 import { useFonts } from "expo-font"
 import * as SplashScreen from "expo-splash-screen"
+import { Dashboard } from "./src/components/index"
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { NavigationContainer } from "@react-navigation/native"
 
 SplashScreen.preventAutoHideAsync()
+
+const HomeStack = createNativeStackNavigator()
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
     "parry-hotter": require("./assets/fonts/ParryHotter.ttf")
@@ -21,8 +26,15 @@ const App = () => {
   }
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <UpComingWeather />
+      <NavigationContainer>
+        <HomeStack.Navigator initialRouteName="Home">
+          <HomeStack.Screen name="Home" component={Dashboard} />
+        </HomeStack.Navigator>
+      </NavigationContainer>
     </View>
+    // <View style={styles.container} onLayout={onLayoutRootView}>
+    //   <UpComingWeather />
+    // </View>
   )
 }
 

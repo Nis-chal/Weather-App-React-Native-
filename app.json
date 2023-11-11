@@ -7,7 +7,7 @@
     "icon": "./assets/apple.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/potato.png",
+      "image": "./assets/noodles.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
