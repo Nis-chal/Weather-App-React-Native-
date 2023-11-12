@@ -3,11 +3,11 @@ import { View, StyleSheet } from "react-native"
 
 import { useFonts } from "expo-font"
 import * as SplashScreen from "expo-splash-screen"
-import { Dashboard } from "./src/components/index"
-
+import Dashboard from "./src/components/Dashboard"
+import Instagram from "./src/components/instagram/Instagram"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { NavigationContainer } from "@react-navigation/native"
-
+import Header from "./src/components/instagram/Header"
 SplashScreen.preventAutoHideAsync()
 
 const HomeStack = createNativeStackNavigator()
@@ -28,7 +28,16 @@ const App = () => {
     <View style={styles.container} onLayout={onLayoutRootView}>
       <NavigationContainer>
         <HomeStack.Navigator initialRouteName="Home">
-          <HomeStack.Screen name="Home" component={Dashboard} />
+          <HomeStack.Screen
+            name="Home"
+            component={Dashboard}
+            options={{ headerShown: false }}
+          />
+          <HomeStack.Screen
+            name="feeds"
+            component={Instagram}
+            options={{ headerShown: false }}
+          />
         </HomeStack.Navigator>
       </NavigationContainer>
     </View>

@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { City, UpComingWeather, CurrentWeather } from "./"
 import { Feather } from "@expo/vector-icons"
 import Ionicons from "react-native-vector-icons/Ionicons"
+import Instagram from "./instagram/Instagram"
 const Dashboard = () => {
   const Tab = createBottomTabNavigator()
   return (
@@ -15,7 +16,7 @@ const Dashboard = () => {
     >
       <Tab.Screen
         name="hell"
-        component={UpComingWeather}
+        component={Instagram}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -23,12 +24,13 @@ const Dashboard = () => {
               size={25}
               color={focused ? "tomato" : "black"}
             />
-          )
+          ),
+          headerShown: false
         }}
       />
       <Tab.Screen
         name="Profile"
-        component={CurrentWeather}
+        component={UpComingWeather}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
