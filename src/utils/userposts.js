@@ -33,7 +33,7 @@ export const userposts = [
     postImage: [
       {
         id: 0,
-        type: "video",
+        type: "image",
         url: "https://player.vimeo.com/video/877637035?title=0&portrait=0&byline=0&autoplay=1&muted=true"
       }
     ]
