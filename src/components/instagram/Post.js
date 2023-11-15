@@ -61,6 +61,7 @@ const PostImage = ({ postImage, type }) => {
         margin: 0
       }}
     >
+    <Text></Text>
       {type === "image" ? (
         <Image
           source={{
